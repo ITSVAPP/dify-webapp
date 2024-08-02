@@ -5,9 +5,9 @@ export const API_URL = `${process.env.NEXT_PUBLIC_API_URL}`
 export const APP_INFO: AppInfo = {
   title: 'Chat APP',
   description: '',
-  copyright: '',
+  copyright: 'Infotec Service',
   privacy_policy: '',
-  default_language: 'zh-Hans',
+  default_language: 'ja',
 }
 
 export const isShowPrompt = false

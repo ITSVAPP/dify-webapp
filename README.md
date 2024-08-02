@@ -1,5 +1,24 @@
-# Conversation Web App Template
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 研修用のDifyのアプリ
+
+## 開発環境構築方法
+
+1. クローン
+`git clone https://github.com/ITSVAPP/dify-webapp.git`
+
+1. インストール
+`npm install`
+
+1. 起動
+`npm run dev`
+
+## 最新化の方法
+
+1. upstreamに本家を登録(初回のみ)
+`git remote add upstream https://github.com/langgenius/webapp-conversation.git`
+
+2. 以下、fetchしてマージ
+- `git fetch upstream`
+- `git merge upstream/main`
 
 ## Config App
 Create a file named `.env.local` in the current directory and copy the contents from `.env.example`. Setting the following content:
