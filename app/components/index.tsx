@@ -410,23 +410,41 @@ const Main: FC = () => {
         })
       },
       async onCompleted(hasError?: boolean) {
+        // Immediately set the chatbot as not responding, regardless of potential errors in fetching conversations
+        setResponsingFalse()
+
         if (hasError)
           return
 
-        if (getConversationIdChangeBecauseOfNew()) {
+        try {
+          // Attempt to fetch all conversations and generate a new name for the conversation
           const { data: allConversations }: any = await fetchConversations()
-          const newItem: any = await generationConversationName(allConversations[0].id)
+          if (allConversations && allConversations.length > 0) {
+            const newItem: any = await generationConversationName(allConversations[0].id)
 
-          const newAllConversations = produce(allConversations, (draft: any) => {
-            draft[0].name = newItem.name
-          })
-          setConversationList(newAllConversations as any)
+            // Proceed with setting new conversation information and resetting state as needed
+            const newAllConversations = produce(allConversations, (draft: any) => {
+              draft[0].name = newItem.name
+            })
+            setConversationList(newAllConversations as any)
+
+            // Additional logic to reset inputs and conversation IDs as needed
+            if (getConversationIdChangeBecauseOfNew()) {
+              setConversationIdChangeBecauseOfNew(false)
+              resetNewConversationInputs()
+              setChatNotStarted()
+              setCurrConversationId(allConversations[0].id, APP_ID, true)
+            }
+          }
+          else {
+            // Handle the case where no conversations are returned
+            console.error('No conversations were fetched.')
+          }
         }
-        setConversationIdChangeBecauseOfNew(false)
-        resetNewConversationInputs()
-        setChatNotStarted()
-        setCurrConversationId(tempNewConversationId, APP_ID, true)
-        setResponsingFalse()
+        catch (error) {
+          console.error('An error occurred while fetching conversations or generating a new conversation name:', error)
+          // Here, handle the error as needed, possibly setting additional error states or displaying a message to the user
+        }
       },
       onFile(file) {
         const lastThought = responseItem.agent_thoughts?.[responseItem.agent_thoughts?.length - 1]
