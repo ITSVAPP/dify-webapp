@@ -2,9 +2,11 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import commonEn from './lang/common.en'
+import commonEs from './lang/common.es'
 import commonZh from './lang/common.zh'
 import commonJa from './lang/common.ja'
 import appEn from './lang/app.en'
+import appEs from './lang/app.es'
 import appZh from './lang/app.zh'
 import appJa from './lang/app.ja'
 import toolsEn from './lang/tools.en'
@@ -19,6 +21,12 @@ const resources = {
       app: appEn,
       // tools
       tools: toolsEn,
+    },
+  },
+  'es': {
+    translation: {
+      common: commonEs,
+      app: appEs,
     },
   },
   'zh-Hans': {
