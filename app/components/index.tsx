@@ -410,6 +410,9 @@ const Main: FC = () => {
         })
       },
       async onCompleted(hasError?: boolean) {
+        // Immediately set the chatbot as not responding, regardless of potential errors in fetching conversations
+        setResponsingFalse()
+
         if (hasError)
           return
 
@@ -423,11 +426,6 @@ const Main: FC = () => {
           })
           setConversationList(newAllConversations as any)
         }
-        setConversationIdChangeBecauseOfNew(false)
-        resetNewConversationInputs()
-        setChatNotStarted()
-        setCurrConversationId(tempNewConversationId, APP_ID, true)
-        setResponsingFalse()
       },
       onFile(file) {
         const lastThought = responseItem.agent_thoughts?.[responseItem.agent_thoughts?.length - 1]
