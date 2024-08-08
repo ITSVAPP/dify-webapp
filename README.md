@@ -20,6 +20,25 @@
 - `git fetch upstream`
 - `git merge upstream/main`
 
+3. アプリにする場合
+以下のコードを追記
+```
+ <script>
+    window.difyChatbotConfig = {
+      url: "{URL}",
+    };
+  </script>
+  <script
+    src="{URL}/dify.js"
+    defer
+  ></script>
+  <style>
+    #dify-chatbot-bubble-button {
+      background-color: #1c64f2 !important;
+    }
+  </style>
+```
+
 ## Config App
 Create a file named `.env.local` in the current directory and copy the contents from `.env.example`. Setting the following content:
 ```
@@ -29,6 +48,9 @@ NEXT_PUBLIC_APP_ID=
 NEXT_PUBLIC_APP_KEY=
 # APP URL
 NEXT_PUBLIC_API_URL=
+# APP DOMAIN
+NEXT_PUBLIC_API_DOMAIN=
+
 ```
 
 Config more in `config/index.ts` file:   

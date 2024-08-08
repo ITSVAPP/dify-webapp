@@ -6,7 +6,7 @@ import { API_DOMAIN } from '@/config'
 export function middleware(request: NextRequest) {
   // CORS設定(本番環境時に修正が必要)
   const headers = new Headers(request.headers)
-  headers.set('Access-Control-Allow-Origin', '*')
+  headers.set('Access-Control-Allow-Origin', API_DOMAIN)
   headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
   headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
 
