@@ -413,10 +413,11 @@ const Main: FC = () => {
         if (hasError)
           return
 
-        if (getConversationIdChangeBecauseOfNew()) {
-          const { data: allConversations }: any = await fetchConversations()
-          const newItem: any = await generationConversationName(allConversations[0].id)
+        const { data: allConversations }: any = await fetchConversations()
 
+        if (allConversations && allConversations.length > 0) {
+          const newItem: any = await generationConversationName(allConversations[0].id)
+          // Proceed with setting new conversation information and resetting state as needed
           const newAllConversations = produce(allConversations, (draft: any) => {
             draft[0].name = newItem.name
           })
