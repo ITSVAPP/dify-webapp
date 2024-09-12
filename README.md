@@ -39,6 +39,15 @@
   </style>
 ```
 
+
+## v0の追加
+
+`npx v0@latest init`
+
+### 追加コマンド
+
+`npx shadcn@latest add "https://v0.dev/chat/b/cEDrPO1?token=eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..fwss8ERv--2YnUbf.ZN1CkVgTe34fZx_pUvsQPJv_XACVpJlj1dGDBfif6hUn9zyah8Y.0drnV6JiapavmkmvrFw1UA"`
+
 ## Config App
 Create a file named `.env.local` in the current directory and copy the contents from `.env.example`. Setting the following content:
 ```
