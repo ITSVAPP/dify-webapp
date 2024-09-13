@@ -1,9 +1,9 @@
 'use client'
 
-import { Login } from '@/app/components/login'
+import { Login } from '@/app/components/auth/login'
 
 const LoginPage = () => {
-  return <Login></Login>
+  return <Login />
 }
 
 export default LoginPage

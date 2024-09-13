@@ -3,9 +3,9 @@
 import { Heart, Lock, Mail } from 'lucide-react'
 import type { FormEvent } from 'react'
 import { useState } from 'react'
-import { Button } from './ui/button'
-import { Label } from './ui/label'
-import { Input } from './ui/input'
+import { Label } from '@/app/components/ui/label'
+import { Input } from '@/app/components/ui/input'
+import { Button } from '@/app/components/ui/button'
 import { supabase } from '@/service/supabase'
 
 export function Login() {

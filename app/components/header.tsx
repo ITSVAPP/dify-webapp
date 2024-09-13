@@ -4,6 +4,7 @@ import {
   Bars3Icon,
   PencilSquareIcon,
 } from '@heroicons/react/24/solid'
+import Logout from './auth/logout'
 import AppIcon from '@/app/components/base/app-icon'
 export type IHeaderProps = {
   title: string
@@ -19,6 +20,7 @@ const Header: FC<IHeaderProps> = ({
 }) => {
   return (
     <div className="shrink-0 flex items-center justify-between h-12 px-3 bg-gray-100">
+      <Logout />
       {isMobile
         ? (
           <div
