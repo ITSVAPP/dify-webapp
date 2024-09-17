@@ -26,13 +26,11 @@ export function Login() {
     }
 
     const { data, error } = await supabase.auth.signInWithPassword({ email, password })
-    if (error) {
+    if (error)
       setError(`ログインに失敗しました: ${error.message}`)
-    }
-    else {
+
+    else
       setSuccess('ログインに成功しました。')
-      console.log('User logged in:', data.user)
-    }
   }
 
   return (

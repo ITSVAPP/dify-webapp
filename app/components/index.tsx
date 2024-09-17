@@ -19,7 +19,7 @@ import useBreakpoints, { MediaType } from '@/hooks/use-breakpoints'
 import Loading from '@/app/components/base/loading'
 import { replaceVarWithValues, userInputsFormToPromptVariables } from '@/utils/prompt'
 import AppUnavailable from '@/app/components/app-unavailable'
-import { API_KEY, APP_ID, APP_INFO, isShowPrompt, promptTemplate } from '@/config'
+import { API_KEY, APP_ID, APP_INFO, VIEW_WELCOM_PAGE, isShowPrompt, promptTemplate } from '@/config'
 import type { Annotation as AnnotationType } from '@/types/log'
 import { addFileInfos, sortAgentSorts } from '@/utils/tools'
 
@@ -167,6 +167,17 @@ const Main: FC<IMainProps> = () => {
     // trigger handleConversationSwitch
     setCurrConversationId(id, APP_ID)
     hideSidebar()
+
+    // ウェルカムページを表示する場合は終了する
+    if (!VIEW_WELCOM_PAGE && id === '-1') {
+      const res: Record<string, any> = {}
+      if (promptConfig) {
+        promptConfig.prompt_variables.forEach((item) => {
+          res[item.key] = ''
+        })
+      }
+      handleStartChat(res)
+    }
   }
 
   /*

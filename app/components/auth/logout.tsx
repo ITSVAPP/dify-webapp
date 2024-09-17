@@ -1,3 +1,4 @@
+import { FiLogOut } from 'react-icons/fi'
 import { supabase } from '@/service/supabase'
 
 const Logout = () => {
@@ -10,9 +11,11 @@ const Logout = () => {
   }
 
   return (
-    <header>
-      <button onClick={handleLogout}>Logout</button>
-    </header>
+    <button
+      onClick={handleLogout}
+      className="flex items-center px-4 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500" >
+      <FiLogOut size={19} />
+    </button>
   )
 }
 
