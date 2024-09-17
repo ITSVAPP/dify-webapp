@@ -59,6 +59,10 @@ const Main: FC<IMainProps> = () => {
     setAutoFreeze(false)
     return () => {
       setAutoFreeze(true)
+
+      // ウェルカムページの非表示化
+      if (!VIEW_WELCOM_PAGE)
+        handleConversationIdChange('-1')
     }
   }, [])
 
@@ -168,7 +172,7 @@ const Main: FC<IMainProps> = () => {
     setCurrConversationId(id, APP_ID)
     hideSidebar()
 
-    // ウェルカムページを表示する場合は終了する
+    // ウェルカムページをカットする
     if (!VIEW_WELCOM_PAGE && id === '-1') {
       const res: Record<string, any> = {}
       if (promptConfig) {
