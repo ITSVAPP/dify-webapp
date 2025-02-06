@@ -242,7 +242,12 @@ const Main: FC<IMainProps> = () => {
         const [conversationData, appParams] = await Promise.all([fetchConversations(), fetchAppParams()])
 
         // handle current conversation id
-        const { data: conversations } = conversationData as { data: ConversationItem[] }
+        const { data: conversations, error } = conversationData as { data: ConversationItem[]; error: string }
+        if (error) {
+          Toast.notify({ type: 'error', message: error })
+          throw new Error(error)
+          return
+        }
         const _conversationId = getConversationIdFromStorage(APP_ID)
         const isNotNewConversation = conversations.some(item => item.id === _conversationId)
 
